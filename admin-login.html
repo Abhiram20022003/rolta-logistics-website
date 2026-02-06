@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login | Rolta Logistics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body style="background:#0b3c5d;">
+
+<div class="login-wrapper">
+
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <p class="login-sub">Rolta Logistics Pvt Ltd</p>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <p id="error" class="error-msg"></p>
+  </div>
+
+</div>
+
+<script>
+function login() {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  if (user === "admin" && pass === "rolta123") {
+    localStorage.setItem("adminLoggedIn", "true");
+    window.location.href = "admin.html";
+  } else {
+    document.getElementById("error").innerText = "Invalid username or password";
+  }
+}
+</script>
+
+</body>
+</html>

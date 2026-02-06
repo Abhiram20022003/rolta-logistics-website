@@ -3,14 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Track Shipment | Rolta Logistics Pvt Ltd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="container header-flex">
-    <img src="assets/images/logo.png" class="logo">
-    <nav>
+
+    <div class="logo-wrap">
+      <img src="assets/images/logo.png" class="logo">
+      <span class="company-name">Rolta Logistics Pvt Ltd</span>
+    </div>
+
+    <nav id="nav-menu">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
@@ -18,16 +28,50 @@
       <a href="tracking.html">Tracking</a>
       <a href="contact.html">Contact</a>
     </nav>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
   </div>
 </header>
 
+<!-- TRACKING SECTION -->
 <section class="section">
   <h2>Track Your Shipment</h2>
 
-  <div class="track-box">
-    <input type="text" id="awb" placeholder="Enter AWB / Consignment Number">
-    <button onclick="trackShipment()">Track Shipment</button>
-    <p id="result" style="margin-top:20px;"></p>
+  <div class="container" style="max-width:500px; text-align:center;">
+    <input type="text" id="trackId" placeholder="Enter Tracking ID (e.g. RL12345)"
+      style="width:100%; padding:14px; margin-bottom:15px;">
+
+    <button onclick="trackShipment()" class="btn" style="border:none; cursor:pointer;">
+      Track Shipment
+    </button>
+  </div>
+
+  <!-- RESULT -->
+  <div id="trackingResult" class="container" style="display:none; margin-top:40px; max-width:700px;">
+    
+    <div class="card">
+      <h3>Shipment Details</h3>
+      <p><strong>Tracking ID:</strong> <span id="r-id"></span></p>
+      <p><strong>From:</strong> Hyderabad</p>
+      <p><strong>To:</strong> Mumbai</p>
+      <p><strong>Vehicle:</strong> Container Truck</p>
+      <p><strong>Estimated Delivery:</strong> 2 Days</p>
+    </div>
+
+    <!-- STATUS -->
+    <div class="card" style="margin-top:20px;">
+      <h3>Live Status</h3>
+
+      <div class="status-bar">
+        <div class="status active">Booked</div>
+        <div class="status active">In Transit</div>
+        <div class="status">Delivered</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -35,21 +79,25 @@
   © 2026 Rolta Logistics Pvt Ltd. All Rights Reserved.
 </footer>
 
+<!-- SCRIPT -->
 <script>
 function trackShipment() {
-  const awb = document.getElementById("awb").value;
-  const result = document.getElementById("result");
+  const id = document.getElementById("trackId").value;
+  const status = localStorage.getItem("trackingStatus") || "In Transit";
 
-  if (awb === "RL12345") {
-    result.innerHTML =
-      "<strong>Status:</strong> In Transit <br>" +
-      "<strong>From:</strong> Hyderabad <br>" +
-      "<strong>To:</strong> Mumbai <br>" +
-      "<strong>Expected Delivery:</strong> 2 Days";
-  } else if (awb === "") {
-    result.innerHTML = "Please enter a valid consignment number.";
-  } else {
-    result.innerHTML = "Shipment not found. (Demo Mode)";
+  document.getElementById("r-id").innerText = id;
+  document.getElementById("trackingResult").style.display = "block";
+
+  const statuses = document.querySelectorAll(".status");
+  statuses.forEach(s => s.classList.remove("active"));
+
+  if (status === "Booked") statuses[0].classList.add("active");
+  if (status === "In Transit") {
+    statuses[0].classList.add("active");
+    statuses[1].classList.add("active");
+  }
+  if (status === "Delivered") {
+    statuses.forEach(s => s.classList.add("active"));
   }
 }
 </script>

@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Fleet | Rolta Logistics Pvt Ltd</title>
+  <title>Our Fleet | Rolta Logistics Pvt Ltd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
 <header>
   <div class="container header-flex">
-    <img src="assets/images/logo.png" class="logo">
-    <nav>
+    <div class="logo-wrap">
+      <img src="assets/images/logo.png" class="logo">
+      <span class="company-name">Rolta Logistics Pvt Ltd</span>
+    </div>
+    <nav id="nav-menu">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
@@ -18,45 +23,32 @@
       <a href="tracking.html">Tracking</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
   </div>
 </header>
 
 <section class="section">
-  <h2>Our Fleet Strength</h2>
+  <h2>Our Fleet</h2>
 
-  <div class="container fleet-box">
-    <div>
-      <h2>150+</h2>
-      <p>Heavy & Medium Trucks</p>
-    </div>
-    <div>
-      <h2>Small Vehicles</h2>
-      <p>City & Short Route Transport</p>
-    </div>
-    <div>
-      <h2>GPS Enabled</h2>
-      <p>Real-Time Monitoring</p>
-    </div>
-    <div>
-      <h2>Trained Drivers</h2>
-      <p>Experienced & Verified</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <p style="text-align:center;">
-      Our modern and well-maintained fleet allows us to handle all types of cargo
-      efficiently. From full truck loads to express deliveries, our vehicles are
-      equipped to meet diverse logistics needs across India.
-    </p>
+  <div class="container services-grid">
+    <div class="card"><h3>Mini Trucks</h3><p>City & short-distance transport</p></div>
+    <div class="card"><h3>Container Trucks</h3><p>Secure goods transportation</p></div>
+    <div class="card"><h3>Heavy Load Trucks</h3><p>Industrial & bulk cargo</p></div>
+    <div class="card"><h3>Refrigerated Trucks</h3><p>Cold-chain logistics</p></div>
   </div>
 </section>
 
 <footer>
   © 2026 Rolta Logistics Pvt Ltd. All Rights Reserved.
 </footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("nav-menu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>

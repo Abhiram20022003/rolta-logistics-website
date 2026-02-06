@@ -20,18 +20,26 @@
   <div class="container header-flex">
 
     <div class="logo-wrap">
-      <img src="assets/images/logo.png" class="logo" alt="Rolta Logistics Pvt Ltd">
+      <img src="assets/images/logo.png" class="logo" alt="Rolta Logistics">
       <span class="company-name">Rolta Logistics Pvt Ltd</span>
     </div>
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="fleet.html">Fleet</a>
-      <a href="tracking.html">Tracking</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <nav id="nav-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="fleet.html">Fleet</a>
+  <a href="tracking.html">Tracking</a>
+  <a href="contact.html">Contact</a>
+  <a href="admin-login.html" class="admin-link">Admin</a>
+<a href="client-login.html" class="admin-link">Client Login</a>
+
+</nav>
+
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
 
   </div>
 </header>
@@ -111,6 +119,12 @@
 <footer>
   © 2026 Rolta Logistics Pvt Ltd. All Rights Reserved.
 </footer>
+<script>
+function toggleMenu() {
+  document.getElementById("nav-menu").classList.toggle("active");
+}
+</script>
+
 
 </body>
 </html>
