@@ -70,11 +70,9 @@ nav a:hover {
   justify-content: center;
   text-align: center;
   color: white;
-
-
-  background-position: center;
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
-
   animation: slideBg 20s infinite ease-in-out;
 }
 
@@ -245,4 +243,5 @@ footer {
     height: 42px;
   }
 }
+
 
