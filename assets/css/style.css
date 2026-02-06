@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #f4f7fb;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* HEADER */
+header {
+  background: #0b3c5d;
+  padding: 15px 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 55px;
+}
+
+nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #1e88e5;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(rgba(11,60,93,0.85), rgba(11,60,93,0.85)),
+              url("../images/truck.jpg") center/cover no-repeat;
+  color: #fff;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.btn {
+  background: #1e88e5;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* STATS */
+.stats {
+  background: #fff;
+  padding: 60px 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+.stats h2 {
+  font-size: 36px;
+  color: #0b3c5d;
+}
+
+/* SECTION */
+.section {
+  padding: 70px 0;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #0b3c5d;
+}
+
+/* SERVICES */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #0b3c5d;
+}
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+
+/* FLEET */
+.fleet-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+.fleet-box div {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+/* TRACKING */
+.track-box {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.track-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.track-box button {
+  width: 100%;
+  padding: 12px;
+  background: #0b3c5d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  background: #0b3c5d;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+/* ANIMATIONS */
+.fade-in {
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ICON STYLE */
+.icon {
+  font-size: 38px;
+  color: #1e88e5;
+  margin-bottom: 15px;
+}
+
+.logo {
+  height: 55px;
+}
+
+
