@@ -70,11 +70,14 @@ nav a:hover {
   justify-content: center;
   text-align: center;
   color: white;
-  background-size: cover;
-  background-position: center center;
+
+  background-size: 75%;
+  background-position: center;
   background-repeat: no-repeat;
+
   animation: slideBg 20s infinite ease-in-out;
 }
+
 
 .hero-overlay {
   position: absolute;
@@ -242,3 +245,4 @@ footer {
     height: 42px;
   }
 }
+
