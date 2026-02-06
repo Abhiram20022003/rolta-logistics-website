@@ -1,0 +1,60 @@
+let orders = [
+  { lorry:"TRK001", pickup:"Hyderabad", drop:"Bangalore", status:"In Transit" }
+];
+
+const ordersTable = document.getElementById("ordersTable").getElementsByTagName('tbody')[0];
+const orderModal = document.getElementById("orderModal");
+const createOrderBtn = document.getElementById("createOrderBtn");
+const closeOrderModal = document.getElementsByClassName("close")[0];
+const orderForm = document.getElementById("orderForm");
+
+function renderOrders() {
+  ordersTable.innerHTML = "";
+  orders.forEach((order, index)=>{
+    let row = ordersTable.insertRow();
+    row.innerHTML = `
+      <td>${index+1}</td>
+      <td>${order.lorry}</td>
+      <td>${order.pickup}</td>
+      <td>${order.drop}</td>
+      <td>${order.status}</td>
+      <td>
+        <button onclick="editOrder(${index})">Edit</button>
+        <button onclick="deleteOrder(${index})">Delete</button>
+      </td>
+    `;
+  });
+}
+
+function editOrder(index){
+  orderModal.style.display="block";
+  document.getElementById("orderIndex").value=index;
+  document.getElementById("orderLorry").value=orders[index].lorry;
+  document.getElementById("pickup").value=orders[index].pickup;
+  document.getElementById("drop").value=orders[index].drop;
+  document.getElementById("orderStatus").value=orders[index].status;
+}
+
+function deleteOrder(index){
+  if(confirm("Delete this order?")){orders.splice(index,1);renderOrders();}
+}
+
+createOrderBtn.onclick = () => { orderModal.style.display="block"; orderForm.reset(); document.getElementById("orderIndex").value=""; }
+closeOrderModal.onclick = () => orderModal.style.display="none";
+window.onclick = e => { if(e.target===orderModal) orderModal.style.display="none"; }
+
+orderForm.onsubmit = e => {
+  e.preventDefault();
+  const index = document.getElementById("orderIndex").value;
+  const orderData = {
+    lorry: document.getElementById("orderLorry").value,
+    pickup: document.getElementById("pickup").value,
+    drop: document.getElementById("drop").value,
+    status: document.getElementById("orderStatus").value
+  };
+  if(index==="") orders.push(orderData); else orders[index]=orderData;
+  orderModal.style.display="none";
+  renderOrders();
+}
+
+renderOrders();

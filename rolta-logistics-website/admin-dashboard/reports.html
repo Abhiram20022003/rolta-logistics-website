@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reports</title>
+<link rel="stylesheet" href="css/admin.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<aside class="sidebar">
+    <div class="logo">Rolta Admin</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="fleet.html">Fleet Management</a></li>
+            <li><a href="tracking.html">Tracking</a></li>
+            <li><a href="reports.html" class="active">Reports</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<main class="main-content">
+    <header><h1>Reports</h1></header>
+    <div style="width:100%; max-width:700px; margin:auto;">
+        <canvas id="fleetStatusChart"></canvas>
+    </div>
+</main>
+
+<script>
+const ctx = document.getElementById('fleetStatusChart').getContext('2d');
+const fleetStatusChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Available', 'On Route', 'Maintenance'],
+        datasets: [{
+            label: 'Fleet Status',
+            data: [50, 80, 20],
+            backgroundColor: ['#0a3d62', '#3c40c6', '#f7b731'],
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+    }
+});
+</script>
+</body>
+</html>

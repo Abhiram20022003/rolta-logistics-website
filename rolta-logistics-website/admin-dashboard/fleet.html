@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet Management</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">Rolta Admin</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="fleet.html" class="active">Fleet Management</a></li>
+                <li><a href="tracking.html">Tracking</a></li>
+                <li><a href="reports.html">Reports</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <h1>Fleet Management</h1>
+        </header>
+
+        <section class="fleet-section">
+            <button id="addTruckBtn">Add Truck</button>
+            <table id="fleetTable">
+                <thead>
+                    <tr>
+                        <th>Truck ID</th>
+                        <th>Model</th>
+                        <th>Driver</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Trucks will be inserted here dynamically -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Add/Edit Modal -->
+    <div id="truckModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add Truck</h2>
+            <form id="truckForm">
+                <input type="hidden" id="truckIndex">
+                <label>Truck ID</label>
+                <input type="text" id="truckId" required>
+                <label>Model</label>
+                <input type="text" id="truckModel" required>
+                <label>Driver</label>
+                <input type="text" id="truckDriver" required>
+                <label>Status</label>
+                <select id="truckStatus">
+                    <option value="Available">Available</option>
+                    <option value="On Route">On Route</option>
+                    <option value="Maintenance">Maintenance</option>
+                </select>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/fleet.js"></script>
+</body>
+</html>

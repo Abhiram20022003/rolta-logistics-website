@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Management</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<aside class="sidebar">
+<div class="logo">Rolta Admin</div>
+<nav>
+<ul>
+<li><a href="index.html">Dashboard</a></li>
+<li><a href="fleet.html">Fleet Management</a></li>
+<li><a href="tracking.html">Tracking</a></li>
+<li><a href="users.html" class="active">Users</a></li>
+<li><a href="orders.html">Orders</a></li>
+<li><a href="reports.html">Reports</a></li>
+</ul>
+</nav>
+</aside>
+
+<main class="main-content">
+<header><h1>User Management</h1></header>
+<section class="users-section">
+<button id="addUserBtn">Add User</button>
+<table id="usersTable">
+<thead>
+<tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Action</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</section>
+</main>
+
+<!-- Modal -->
+<div id="userModal" class="modal">
+<div class="modal-content">
+<span class="close">&times;</span>
+<h2 id="modalTitle">Add User</h2>
+<form id="userForm">
+<input type="hidden" id="userIndex">
+<label>Name</label><input type="text" id="userName" required>
+<label>Email</label><input type="email" id="userEmail" required>
+<label>Role</label>
+<select id="userRole">
+<option value="Admin">Admin</option>
+<option value="Driver">Driver</option>
+<option value="Client">Client</option>
+</select>
+<button type="submit">Save</button>
+</form>
+</div>
+</div>
+
+<script src="js/users.js"></script>
+</body>
+</html>

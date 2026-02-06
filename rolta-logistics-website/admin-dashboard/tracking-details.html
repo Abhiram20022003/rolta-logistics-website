@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracking Details</title>
+<link rel="stylesheet" href="css/admin.css">
+<style>#map{height:70vh;width:100%;border-radius:10px;}</style>
+</head>
+<body>
+<aside class="sidebar">
+<div class="logo">Rolta Admin</div>
+<nav>
+<ul>
+<li><a href="index.html">Dashboard</a></li>
+<li><a href="fleet.html">Fleet Management</a></li>
+<li><a href="tracking.html">Tracking</a></li>
+<li><a href="tracking-details.html" class="active">Tracking Details</a></li>
+<li><a href="reports.html">Reports</a></li>
+</ul>
+</nav>
+</aside>
+
+<main class="main-content">
+<header><h1>Tracking Details</h1></header>
+<section>
+<div id="map"></div>
+<div id="truckInfo">
+<h2>Truck TRK001</h2>
+<p>Driver: Ravi Kumar</p>
+<p>Status: On Route</p>
+<p>Speed: 60 km/h</p>
+</div>
+</section>
+</main>
+
+<script>
+function initMap() {
+  const center = { lat: 17.3850, lng: 78.4867 };
+  const map = new google.maps.Map(document.getElementById("map"), { zoom: 8, center });
+  const trucks = [{ id:"TRK001", pos:{ lat:17.45, lng:78.35 } }];
+  trucks.forEach(truck => {
+    new google.maps.Marker({ position: truck.pos, map, title: truck.id });
+  });
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>

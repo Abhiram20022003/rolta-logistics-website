@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | Rolta Logistics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<script>
+if (localStorage.getItem("adminLoggedIn") !== "true") {
+  window.location.href = "admin-login.html";
+}
+</script>
+
+<header>
+  <div class="container header-flex">
+    <h2 style="color:white;">Admin Dashboard</h2>
+    <button onclick="logout()" class="btn">Logout</button>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container admin-grid">
+
+    <div class="admin-card">
+      <h3>Total Shipments</h3>
+      <p>1,245</p>
+    </div>
+
+    <div class="admin-card">
+      <h3>Active Shipments</h3>
+      <p>312</p>
+    </div>
+
+    <div class="admin-card">
+      <h3>Delivered</h3>
+      <p>890</p>
+    </div>
+
+    <div class="admin-card">
+      <h3>Fleet Vehicles</h3>
+      <p>150</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2>Update Tracking Status</h2>
+
+  <div class="container" style="max-width:500px;">
+    <input id="trackId" placeholder="Tracking ID" />
+    <select id="status">
+      <option>Booked</option>
+      <option>In Transit</option>
+      <option>Delivered</option>
+    </select>
+    <button onclick="updateStatus()" class="btn">Update Status</button>
+
+    <p id="updateMsg" style="margin-top:10px;color:green;"></p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Rolta Logistics Pvt Ltd
+</footer>
+
+<script>
+function logout() {
+  localStorage.removeItem("adminLoggedIn");
+  window.location.href = "admin-login.html";
+}
+
+function updateStatus() {
+  const id = document.getElementById("trackId").value;
+  const status = document.getElementById("status").value;
+
+  if (id === "") {
+    alert("Enter Tracking ID");
+    return;
+  }
+
+  localStorage.setItem("trackingStatus", status);
+  document.getElementById("updateMsg").innerText =
+    "Tracking ID " + id + " updated to " + status;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+let trucks = [
+    { id: "TRK001", model: "Volvo FH", driver: "Ravi Kumar", status: "On Route" },
+    { id: "TRK002", model: "Tata Prima", driver: "Sunil Reddy", status: "Available" }
+];
+
+const fleetTable = document.getElementById("fleetTable").getElementsByTagName('tbody')[0];
+const modal = document.getElementById("truckModal");
+const addTruckBtn = document.getElementById("addTruckBtn");
+const closeModal = document.getElementsByClassName("close")[0];
+const truckForm = document.getElementById("truckForm");
+const modalTitle = document.getElementById("modalTitle");
+
+function renderFleet() {
+    fleetTable.innerHTML = "";
+    trucks.forEach((truck, index) => {
+        let row = fleetTable.insertRow();
+        row.innerHTML = `
+            <td>${truck.id}</td>
+            <td>${truck.model}</td>
+            <td>${truck.driver}</td>
+            <td>${truck.status}</td>
+            <td>
+                <button onclick="editTruck(${index})">Edit</button>
+                <button onclick="deleteTruck(${index})">Delete</button>
+            </td>
+        `;
+    });
+}
+
+function editTruck(index) {
+    modal.style.display = "block";
+    modalTitle.textContent = "Edit Truck";
+    document.getElementById("truckIndex").value = index;
+    document.getElementById("truckId").value = trucks[index].id;
+    document.getElementById("truckModel").value = trucks[index].model;
+    document.getElementById("truckDriver").value = trucks[index].driver;
+    document.getElementById("truckStatus").value = trucks[index].status;
+}
+
+function deleteTruck(index) {
+    if(confirm("Are you sure you want to delete this truck?")){
+        trucks.splice(index, 1);
+        renderFleet();
+    }
+}
+
+addTruckBtn.onclick = () => {
+    modal.style.display = "block";
+    modalTitle.textContent = "Add Truck";
+    truckForm.reset();
+    document.getElementById("truckIndex").value = "";
+}
+
+closeModal.onclick = () => modal.style.display = "none";
+window.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; }
+
+truckForm.onsubmit = (e) => {
+    e.preventDefault();
+    const index = document.getElementById("truckIndex").value;
+    const truckData = {
+        id: document.getElementById("truckId").value,
+        model: document.getElementById("truckModel").value,
+        driver: document.getElementById("truckDriver").value,
+        status: document.getElementById("truckStatus").value
+    };
+    if(index === ""){
+        trucks.push(truckData);
+    } else {
+        trucks[index] = truckData;
+    }
+    modal.style.display = "none";
+    renderFleet();
+}
+
+renderFleet();

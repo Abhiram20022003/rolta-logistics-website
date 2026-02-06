@@ -1,0 +1,69 @@
+let users = [
+  { name: "Ravi Kumar", email: "ravi@gmail.com", role: "Driver" },
+  { name: "Sunil Reddy", email: "sunil@gmail.com", role: "Client" }
+];
+
+const usersTable = document.getElementById("usersTable").getElementsByTagName('tbody')[0];
+const userModal = document.getElementById("userModal");
+const addUserBtn = document.getElementById("addUserBtn");
+const closeUserModal = document.getElementsByClassName("close")[0];
+const userForm = document.getElementById("userForm");
+
+function renderUsers() {
+  usersTable.innerHTML = "";
+  users.forEach((user, index) => {
+    let row = usersTable.insertRow();
+    row.innerHTML = `
+      <td>${index+1}</td>
+      <td>${user.name}</td>
+      <td>${user.email}</td>
+      <td>${user.role}</td>
+      <td>
+        <button onclick="editUser(${index})">Edit</button>
+        <button onclick="deleteUser(${index})">Delete</button>
+      </td>
+    `;
+  });
+}
+
+function editUser(index) {
+  userModal.style.display = "block";
+  document.getElementById("modalTitle").textContent = "Edit User";
+  document.getElementById("userIndex").value = index;
+  document.getElementById("userName").value = users[index].name;
+  document.getElementById("userEmail").value = users[index].email;
+  document.getElementById("userRole").value = users[index].role;
+}
+
+function deleteUser(index) {
+  if(confirm("Delete this user?")) {
+    users.splice(index,1);
+    renderUsers();
+  }
+}
+
+addUserBtn.onclick = () => {
+  userModal.style.display = "block";
+  document.getElementById("modalTitle").textContent = "Add User";
+  userForm.reset();
+  document.getElementById("userIndex").value = "";
+}
+
+closeUserModal.onclick = () => userModal.style.display = "none";
+window.onclick = e => { if(e.target === userModal) userModal.style.display = "none"; }
+
+userForm.onsubmit = e => {
+  e.preventDefault();
+  const index = document.getElementById("userIndex").value;
+  const userData = {
+    name: document.getElementById("userName").value,
+    email: document.getElementById("userEmail").value,
+    role: document.getElementById("userRole").value
+  };
+  if(index === "") users.push(userData);
+  else users[index] = userData;
+  userModal.style.display = "none";
+  renderUsers();
+}
+
+renderUsers();
